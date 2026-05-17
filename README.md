@@ -1,51 +1,46 @@
-HVAC Predictive Maintenance Demo Guide
-This project is an end‑to‑end AI‑driven Predictive Maintenance dashboard for Commercial HVAC chillers.
+# HVAC Predictive Maintenance Demo Guide
 
-🔐 Login Details
-Before you start, use the following credentials to log into the dashboard:
+This project is an end-to-end AI-driven Predictive Maintenance dashboard for Commercial HVAC chillers.
 
-Username: admin
+## 🚀 How to Run the Demo (Automated)
 
-Password: admin123
-
-These credentials are pre‑configured for the demo environment.
-
-🚀 How to Run the Demo (Automated)
 To easily start the entire stack (FastAPI Backend + React Frontend + Database Seeding), simply run this command from the project root:
 
-powershell
+```powershell
 .\start_demo.ps1
-This will automatically open separate terminal windows for the frontend and backend, and seed the initial baseline data. Once the React app loads in your browser, open the login page and enter the credentials above.
+```
 
-🛠️ How to Run the Demo (Manual)
+This will automatically open separate terminal windows for the frontend and backend, and seed the initial baseline data.
+
+## 🛠️ How to Run the Demo (Manual)
+
 If you prefer to start the servers manually instead of using the script, you can do so:
 
-1. Start the Backend:
-
-powershell
+**1. Start the Backend:**
+```powershell
 cd backend
 py main.py
-2. Start the Frontend:
+```
+
+**2. Start the Frontend:**
 Thanks to the wrapper script at the root, you do not need to navigate into the frontend folder. Just run this from the root directory:
-
-powershell
+```powershell
 npm run dev
-After the frontend starts, open the app in your browser and log in with:
+```
 
-Username: admin
-
-Password: admin123
-
-⚠️ How to Inject a Fault
+## ⚠️ How to Inject a Fault
 To simulate a sudden critical failure (huge spikes in vibration, temperature, and power), run:
 
-powershell
+```powershell
 py inject_fault.py
+```
 After running this, look at the React dashboard—you will see a sharp vertical climb in the sensor charts and a critical AI alert will be triggered.
 
-🔄 How to Revert to Normal
+## 🔄 How to Revert to Normal
+
 You don't need to restart your servers to reset the demo! Simply run:
 
-powershell
+```powershell
 py scripts\revert_db.py
-This instantly drops the fault data from the database and reseeds it with clean baseline data. Your dashboard will automatically update on its next polling cycle, returning to “normal” operating conditions.
+```
+This instantly drops the fault data from the database and reseeds it with clean baseline data. Your dashboard will automatically update on its next polling cycle.
